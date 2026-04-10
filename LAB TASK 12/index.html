@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travels & Tours QnA Bot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Travels & Tours Chatbot</h2>
+
+        <form method="POST">
+            <input type="text" name="query" placeholder="Ask any travel question..." required>
+            <button type="submit">Ask</button>
+        </form>
+
+        {% if response %}
+        <div class="answer-box">
+            <h3>Answer:</h3>
+            <p>{{ response }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
