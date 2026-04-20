@@ -1,0 +1,10 @@
+flask
+langchain
+langchain-community
+langchain-chroma
+langchain-groq
+langchain-huggingface
+pymupdf
+fpdf2
+python-dotenv
+werkzeug

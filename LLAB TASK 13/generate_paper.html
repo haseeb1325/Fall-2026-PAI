@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Question Paper</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; text-align: center; }
+        form { margin: 20px 0; }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover { background: #5a67d8; }
+        .result {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        pre {
+            white-space: pre-wrap;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Generate Question Paper</h1>
+        
+        <form method="POST">
+            <label>Topic / Chapter Name:</label>
+            <input type="text" name="topic" placeholder="e.g. Force and Laws of Motion" required>
+
+            <label>Number of MCQs:</label>
+            <input type="number" name="mcqs" value="10" min="5" max="20">
+
+            <label>Number of Short Questions:</label>
+            <input type="number" name="short" value="5" min="3" max="10">
+
+            <label>Number of Long Questions:</label>
+            <input type="number" name="long" value="3" min="2" max="5">
+
+            <label>Difficulty Level:</label>
+            <select name="difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+            <button type="submit">Generate Question Paper</button>
+        </form>
+
+        {% if paper_text %}
+        <div class="result">
+            <h2>✅ Generated Question Paper</h2>
+            <pre>{{ paper_text }}</pre>
+            <br>
+            <a href="/download/{{ filename }}" style="color:#667eea; font-weight:bold;">
+                📥 Download PDF
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
